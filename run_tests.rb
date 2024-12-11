@@ -11,6 +11,7 @@ tests.each do |test|
 
   if result.include?('test passed')
     output << test.colorize(:green)
+    output << "\n" + result
   else
     output << test.colorize(:red)
     output << "\n" + result
