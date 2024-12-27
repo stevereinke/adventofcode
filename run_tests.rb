@@ -1,8 +1,14 @@
 require 'colorize'
 
-tests = Dir.glob('**/test_*.rb')
+args = ARGV
 
-puts "Running #{tests.count} tests:"
+year = args[0] || '*'
+day = args[1] || '*'
+part = args[2] || '*'
+
+tests = Dir.glob(File.join(year, day, "test_part_#{part}.rb"))
+
+puts "Running #{tests.count} tests for #{year}, #{day}, #{part}:"
 
 tests.each do |test|
   command = "cd #{File.dirname(test)}; ruby #{File.basename(test)}; cd -"
